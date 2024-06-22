@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "resolveJsonModule": true,
+    "paths": {
+      "@aghono/*": [
+        "./src/*"
+      ]
+    }
   }
 }

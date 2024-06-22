@@ -1,14 +1,16 @@
-import { PrismaClient } from "@prisma/client";
-import { Hono } from "hono";
+import { swaggerUI } from '@hono/swagger-ui';
+import { Hono } from 'hono';
+import { logger } from 'hono/logger';
 
-import type { Question, Answers, Options } from "@prisma/client";
-import type { IAnswer, IOptionID, IQuestionResponse } from "./types";
-import { logger } from 'hono/logger'
+import type { Answers, Options, Question } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+
+import * as openapiDocument from '@aghono/openapi.json';
+import type { IAnswer, IOptionID, IQuestionResponse } from "@aghono/types";
 
 const prisma = new PrismaClient();
 const app = new Hono();
 app.use(logger());
-
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
@@ -130,6 +132,13 @@ app.post("/return-scores", async (c) => {
   return c.json({ score: score });
 });
 
+app.get('/ui', swaggerUI({
+  url: 'http://localhost:3000/openapi.json',
+}))
+
+app.get('/openapi.json', async (c) => {
+  return c.json(openapiDocument);
+});
 
 export default {
   port: 3000,
