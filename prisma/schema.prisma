@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Question {
+  QuestionID   Int       @id @default(autoincrement())
+  QuestionText String
+  Answers      Answers[]
+  Options      Options[]
+}
+
+model Options {
+  OptionID  Int       @id @default(autoincrement())
+  text      String
+  qID       Question  @relation(fields: [refQID], references: [QuestionID])
+  isCorrect Boolean
+  AnswerID  Answers[]
+  refQID    Int
+}
+
+model Answers {
+  AnswerID   Int      @id @default(autoincrement())
+  Question   Question @relation(fields: [questionID], references: [QuestionID])
+  Option     Options  @relation(fields: [optionsID], references: [OptionID])
+  email      String
+  questionID Int
+  optionsID  Int
+}
