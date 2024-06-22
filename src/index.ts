@@ -3,10 +3,11 @@ import { Hono } from "hono";
 
 import type { Question, Answers, Options } from "@prisma/client";
 import type { IAnswer, IOptionID, IQuestionResponse } from "./types";
+import { logger } from 'hono/logger'
 
-const app = new Hono();
 const prisma = new PrismaClient();
-
+const app = new Hono();
+app.use(logger());
 
 
 app.get("/", (c) => {
@@ -46,11 +47,6 @@ app.post("/upload-questions", async (c) => {
   const body = await c.req.json();
   const questions = body.questions as Question[];
   try {
-    await prisma.question.create({
-      data: {
-        QuestionText: "What is the capital of India?",
-      }
-    })
     await prisma.question.createMany({
       data: questions,
     });
