@@ -261,6 +261,148 @@
                     }
                 }
             }
+        },
+        "/delete-question": {
+            "delete": {
+                "summary": "Deletes a question",
+                "operationId": "deleteQuestion",
+                "tags": [
+                    "Question"
+                ],
+                "parameters": [
+                    {
+                        "name": "questionID",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The ID of the question to delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Question deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/delete-option": {
+            "delete": {
+                "summary": "Deletes an option",
+                "operationId": "deleteOption",
+                "tags": [
+                    "Option"
+                ],
+                "parameters": [
+                    {
+                        "name": "optionID",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The ID of the option to delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Option deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/update-question": {
+            "patch": {
+                "summary": "Updates a question",
+                "operationId": "updateQuestion",
+                "tags": [
+                    "Question"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "questionID": {
+                                        "type": "integer",
+                                        "description": "The ID of the question to update"
+                                    },
+                                    "questionText": {
+                                        "type": "string",
+                                        "description": "The new text for the question"
+                                    }
+                                },
+                                "required": [
+                                    "questionID",
+                                    "questionText"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Question updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
     "components": {

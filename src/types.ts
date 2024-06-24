@@ -1,21 +1,17 @@
 interface IOptionID {
-    OptionID: number;
-    text: string;
+	OptionID: number;
+	text: string;
 }
 
 interface IAnswer {
-    questionID: number;
-    optionsID: number;
-    email: string;
+	questionID: number;
+	optionsID: number;
+	email: string;
 }
 
 interface IQuestionResponse {
-    question: string;
-    options: IOptionID[];
+	question: string;
+	options: IOptionID[];
 }
 
-export {
-    IOptionID,
-    IAnswer,
-    IQuestionResponse
-}
+export { IOptionID, IAnswer, IQuestionResponse };

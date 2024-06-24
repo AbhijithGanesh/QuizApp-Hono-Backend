@@ -7,6 +7,15 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model Answers {
+  AnswerID   Int      @id @default(autoincrement())
+  Question   Question @relation(fields: [questionID], references: [QuestionID])
+  Option     Options  @relation(fields: [optionsID], references: [OptionID])
+  email      String
+  questionID Int
+  optionsID  Int
+}
+
 model Question {
   QuestionID   Int       @id @default(autoincrement())
   QuestionText String
@@ -17,17 +26,8 @@ model Question {
 model Options {
   OptionID  Int       @id @default(autoincrement())
   text      String
-  qID       Question  @relation(fields: [refQID], references: [QuestionID])
+  qID       Question  @relation(fields: [refQID], references: [QuestionID], onDelete: Cascade)
   isCorrect Boolean
   AnswerID  Answers[]
   refQID    Int
-}
-
-model Answers {
-  AnswerID   Int      @id @default(autoincrement())
-  Question   Question @relation(fields: [questionID], references: [QuestionID])
-  Option     Options  @relation(fields: [optionsID], references: [OptionID])
-  email      String
-  questionID Int
-  optionsID  Int
 }
