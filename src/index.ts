@@ -216,6 +216,6 @@ app.get("/openapi.json", async (c) => {
 });
 
 export default {
-	port: 3000,
+	port: 8000,
 	fetch: app.fetch,
 };
