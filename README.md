@@ -27,6 +27,9 @@ After starting the service, it will be available at <http://localhost:3000>.
 - `POST /post-options`: Endpoint to post options for questions.
 - `POST /post-answers`: Submit answers for questions.
 - `POST /return-scores`: Returns the score based on submitted answers.
+- `PATCH /update-option`: Updates the text of a specific question identified by the question ID.
+- `DELETE /delete-question`: Updates the text of a specific question identified by the question ID.
+- `PATCH /update-option`: Updates the text of a specific option identified by the option ID.
 
 ## Docker Support
 

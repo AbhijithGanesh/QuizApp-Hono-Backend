@@ -24,6 +24,9 @@
             }
         },
         "/get-all-questions": {
+            "tags": [
+                "Question"
+            ],
             "get": {
                 "summary": "Get all questions with options",
                 "responses": {
@@ -49,6 +52,9 @@
             }
         },
         "/upload-questions": {
+            "tag": [
+                "Question"
+            ],
             "post": {
                 "summary": "Upload a list of questions",
                 "requestBody": {
@@ -106,6 +112,9 @@
             }
         },
         "/post-options": {
+            "tag": [
+                "Option"
+            ],
             "post": {
                 "summary": "Post options for questions",
                 "requestBody": {
@@ -163,6 +172,9 @@
             }
         },
         "/post-answers": {
+            "tag": [
+                "Answer"
+            ],
             "post": {
                 "summary": "Post answers for questions",
                 "requestBody": {
